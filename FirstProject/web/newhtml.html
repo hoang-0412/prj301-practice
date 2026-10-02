@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>  
+        <a href="category?service=deleteCategory&categoryID=">delete</a>
+        <a href="productSVL?service=deleteProduct&productID=">delete</a>
+        <p><a href="addProduct.html">Insert a new Product</a></p>
+        <form action="productSVL">
+            Search By Product Name: <input type="text" name="productName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllProduct">
+        </form>
+        <table border="1">
+            <thead>
+                <tr>                    
+                    <th>productID</th>
+                    <th>productName</th>
+                    <th>image</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                    <th>categoryID</th>
+                    <th>importDate</th>
+                    <th>usingDate</th>
+                    <th>status</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <form action="category">
+            Search By Category Name: <input type="text" name="categoryName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllCategory">
+        </form>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>categoryID</th>
+                    <th>categoryName</th>
+                    <th>describe</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="txtOutput"></div>
+        <div id="txtError">You have enter an integer for a, b, c!</div>
+    </body>
+</html>
