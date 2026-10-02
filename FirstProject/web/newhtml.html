@@ -4,7 +4,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body>  
+    <body>
+        <a href="user?service=deleteUser&userID=">delete</a>
         <a href="category?service=deleteCategory&categoryID=">delete</a>
         <a href="productSVL?service=deleteProduct&productID=">delete</a>
         <p><a href="addProduct.html">Insert a new Product</a></p>
@@ -46,7 +47,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <form action="category">
             Search By Category Name: <input type="text" name="categoryName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">
@@ -73,6 +74,47 @@
                 </tr>
             </tbody>
         </table>
+
+        <p><a href="addUser.html">Insert a new User</a></p>
+        <form action="user">
+            Search By User Name: <input type="text" name="fullName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllUser">
+        </form>
+        <form action="user">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>userID</th>
+                        <th>fullName</th>
+                        <th>password</th>
+                        <th>roleID</th>
+                        <th>address</th>
+                        <th>phone</th>
+                        <th>email</th>
+                        <th>activate</th>
+                        <th>delete</th>
+                        <th>update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
 
         <div id="txtOutput"></div>
         <div id="txtError">You have enter an integer for a, b, c!</div>
