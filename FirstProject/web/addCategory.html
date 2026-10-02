@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="category" method="POST">
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>categoryId:</td>
+                        <td><input type="text" name="categoryId" id="txtId"></td>
+                    </tr>
+                    <tr>
+                        <td>categoryName:</td>
+                        <td><input type="text" name="categoryName" id="txtName"></td>
+                    </tr>
+                    <tr>
+                        <td>describe:</td>
+                        <td><input type="text" name="describe" id="txtDescribe"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit" id="txtSubmit" value="Add category"></td>
+                        <td><input type="reset" value="Reset">
+                            <input type="hidden" name="service" value="addCategory"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </body>
+</html>
