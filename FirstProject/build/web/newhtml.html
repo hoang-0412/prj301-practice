@@ -5,6 +5,7 @@
     </head>
 
     <body>
+        <a href="orderdetail?service=deleteOrderDetail&orderDetailId=">delete</a>
         <a href="order?service=deleteOrder&orderId=">delete</a>
         <a href="role?service=deleteRole&roleId=">delete</a>
         <a href="user?service=deleteUser&userID=">delete</a>
@@ -174,7 +175,41 @@
                 </tr>
             </tbody>
         </table>
+        
+        <p><a href="addOrderDetail.html"></a></p>
+        <form action="orderdetail">
+            Search By detailID: <input type="text" name="detailID" id="txtId">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllOrderDetail">
+        </form>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>detailID</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                    <th>orderID</th>
+                    <th>productID</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
 
+        
         <div id="txtOutput"></div>
         <div id="txtError">You have enter an integer for a, b, c!</div>
     </body>

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="orderdetail" method="POST">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>detailID:</td>
+                        <td><input type="text" name="detailID" id="txtId"></td>
+                    </tr>
+                    <tr>
+                        <td>price:</td>
+                        <td><input type="text" name="price" id="txtPrice"></td>
+                    </tr>
+                    <tr>
+                        <td>quantity:</td>
+                        <td><input type="text" name="quantity" id="txtquantity"></td>
+                    </tr>
+                    <tr>
+                        <td>orderID:</td>
+                        <td><input type="text" name="orderID" id="txtOrderID"></td>
+                    </tr>
+                    <tr>
+                        <td>productID:</td>
+                        <td><input type="text" name="productID" id="txtProductID"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit" id="txtSubmit" value="Add Order Detail"></td>
+                        <td><input type="reset" value="Reset">
+                            <input type="hidden" name="service" value="addOrderDetail"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </body>
+</html>
