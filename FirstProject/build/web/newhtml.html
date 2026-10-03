@@ -5,6 +5,7 @@
     </head>
 
     <body>
+        <a href="role?service=deleteRole&roleId=">delete</a>
         <a href="user?service=deleteUser&userID=">delete</a>
         <a href="category?service=deleteCategory&categoryID=">delete</a>
         <a href="productSVL?service=deleteProduct&productID=">delete</a>
@@ -113,8 +114,35 @@
                     </tr>
                 </tbody>
             </table>
-
         </form>
+
+        <p><a href="addRole.html">Insert a new Role</a></p>
+        <form action="role">
+            Search by Role Name: <input type="text" name="roleName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllRole">
+        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>roleID</th>
+                    <th>roleName</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
 
         <div id="txtOutput"></div>
         <div id="txtError">You have enter an integer for a, b, c!</div>

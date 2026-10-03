@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="role" method="POST">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>roleID:</td>
+                        <td><input type="text" name="roleID" id="txtId"></td>
+                    </tr>
+                    <tr>
+                        <td>roleName:</td>
+                        <td><input type="text" name="roleName" id="txtName"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit" id="txtSubmit" value="Add Role"></td>
+                        <td><input type="reset" value="Reset">
+                            <input type="hidden" name="service" value="addRole"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </body>
+</html>
