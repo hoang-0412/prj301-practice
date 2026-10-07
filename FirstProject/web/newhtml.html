@@ -4,7 +4,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body>  
+    <body>
+        <a href="orderdetail?service=deleteOrderDetail&orderDetailId=">delete</a>
+        <a href="order?service=deleteOrder&orderId=">delete</a>
+        <a href="role?service=deleteRole&roleId=">delete</a>
+        <a href="user?service=deleteUser&userID=">delete</a>
         <a href="category?service=deleteCategory&categoryID=">delete</a>
         <a href="productSVL?service=deleteProduct&productID=">delete</a>
         <p><a href="addProduct.html">Insert a new Product</a></p>
@@ -46,7 +50,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <form action="category">
             Search By Category Name: <input type="text" name="categoryName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">
@@ -74,6 +78,138 @@
             </tbody>
         </table>
 
+        <p><a href="addUser.html">Insert a new User</a></p>
+        <form action="user">
+            Search By User Name: <input type="text" name="fullName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllUser">
+        </form>
+        <form action="user">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>userID</th>
+                        <th>fullName</th>
+                        <th>password</th>
+                        <th>roleID</th>
+                        <th>address</th>
+                        <th>phone</th>
+                        <th>email</th>
+                        <th>activate</th>
+                        <th>delete</th>
+                        <th>update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <p><a href="addRole.html">Insert a new Role</a></p>
+        <form action="role">
+            Search by Role Name: <input type="text" name="roleName" id="txtName">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllRole">
+        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>roleID</th>
+                    <th>roleName</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><a href="addOrder.html">Insert a new Order</a></p>
+        <form action="order">
+            Search by Order ID: <input type="text" name="orderID" id="txtId">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllOrder">
+        </form>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>orderID</th>
+                    <th>orderDate</th>
+                    <th>total</th>
+                    <th>userID</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p><a href="addOrderDetail.html"></a></p>
+        <form action="orderdetail">
+            Search By detailID: <input type="text" name="detailID" id="txtId">
+            <input type="submit" name="submit" id="txtSubmit" value="Search">
+            <input type="reset" value="Reset">
+            <input type="hidden" name="service" value="listAllOrderDetail">
+        </form>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>detailID</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                    <th>orderID</th>
+                    <th>productID</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        
         <div id="txtOutput"></div>
         <div id="txtError">You have enter an integer for a, b, c!</div>
     </body>
