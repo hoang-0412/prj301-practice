@@ -43,7 +43,7 @@ public class OrderDetailServlet extends HttpServlet {
 
             OrderDetails od = new OrderDetails(detailID, price, quantity, orderID, productID);
             int n = dao.insertOrderDetail(od);
-            response.sendRedirect("order");
+            response.sendRedirect("orderdetail");
         }
 
         if (service.equals("listAllOrderDetail")) {

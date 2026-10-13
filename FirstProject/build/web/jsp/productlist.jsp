@@ -15,7 +15,7 @@
         <title><%=pageTtile%></title>
     </head>
     <body>
-        <p><a href="addProduct.html">Insert a new Product</a></p>
+        <p><a href="productjsp?service=addProduct">Insert a new Product</a></p>
         <form action="productjsp">
             Search By Product Name: <input type="text" name="productName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">

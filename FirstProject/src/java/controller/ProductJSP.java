@@ -8,19 +8,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
 import java.util.Vector;
 import model.Products;
+import dal.categoryDAO;
+import model.Categories;
 
 @WebServlet(name = "ProductJSP", urlPatterns = {"/productjsp"})
 public class ProductJSP extends HttpServlet {
 
     String sql = "SELECT * FROM tblProducts";
 
+    String sql2 = "select * from tblCategories";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         productDAO dao = new productDAO();
         Vector<Products> vector;
+        categoryDAO cDao = new categoryDAO();
 
         String service = request.getParameter("service");
         if (service == null) {
@@ -48,6 +54,33 @@ public class ProductJSP extends HttpServlet {
 
             //Step 3: Select view to send data
             request.getRequestDispatcher("jsp/productlist.jsp").forward(request, response);
+        }
+
+        if (service.equals("addProduct")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                Vector<Categories> cVector = cDao.getAllCategory(sql2);
+                for (Categories c : cVector) {
+                    c.getCategoryID();
+                    c.getCategoryName();
+                }
+
+                request.setAttribute("cVector", cVector);
+                request.getRequestDispatcher("jsp/addProduct.jsp").forward(request, response);
+
+            } else {
+                String productName = request.getParameter("productName"),
+                        image = request.getParameter("image");
+                double price = Double.parseDouble(request.getParameter("price"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                String categoryID = request.getParameter("categoryID");
+                Date importDate = Date.valueOf(request.getParameter("importDate")),
+                        usingDate = Date.valueOf(request.getParameter("usingDate"));
+                int status = Integer.parseInt(request.getParameter("status"));
+                Products p = new Products(productName, image, price, quantity, categoryID, importDate, usingDate, status);
+                int n = dao.insertProduct(p);
+                response.sendRedirect("productjsp");
+            }
         }
     }
 

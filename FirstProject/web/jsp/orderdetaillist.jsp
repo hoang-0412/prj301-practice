@@ -14,7 +14,7 @@
         <title><%=pageTitle%></title>
     </head>
     <body>
-        <p><a href="addOrderDetail.html">Insert a new order detail</a></p>
+        <p><a href="orderdetailJSP?service=addOrderDetail">Insert a new order detail</a></p>
 
         <form action="orderdetailJSP">
             Search by order detail ID: <input type="text" name="detailID" id="txtId">

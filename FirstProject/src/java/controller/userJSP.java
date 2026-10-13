@@ -39,12 +39,36 @@ public class userJSP extends HttpServlet {
                 vector = dao.getAllUser("select * from tblUsers\n"
                         + "where fullName like N'%" + fullName + "%'");
             }
-            
+
             request.setAttribute("vector", vector);
             request.setAttribute("tableTitle", "List of user");
             request.setAttribute("pageTitle", "User management");
-            
+
             request.getRequestDispatcher("jsp/userlist.jsp").forward(request, response);
+        }
+
+        if (service.equals("addUser")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                request.getRequestDispatcher("jsp/addUser.jsp").forward(request, response);
+
+            } else {
+                String userID = request.getParameter("userID"),
+                        fullName = request.getParameter("fullName"),
+                        password = request.getParameter("password");
+
+                int roleID = Integer.parseInt(request.getParameter("roleID"));
+
+                String address = request.getParameter("address"),
+                        phone = request.getParameter("phone"),
+                        email = request.getParameter("email");
+
+                int activate = Integer.parseInt(request.getParameter("activate"));
+
+                Users u = new Users(userID, fullName, password, roleID, address, phone, email, activate);
+                int n = dao.insertUser(u);
+                response.sendRedirect("userJSP");
+            }
         }
     }
 

@@ -12,7 +12,7 @@
         <title><%=pageTitle%></title>
     </head>
     <body>
-        <p><a href="addOrder.html">Insert a new order</a></p>
+        <p><a href="orderJSP?service=addOrder">Insert a new order</a></p>
         <form action="orderJSP">
             Search by order ID: <input type="text" name="orderID" id="txtId">
             <input type="submit" name="submit" id="txtSubmit" value="Search">

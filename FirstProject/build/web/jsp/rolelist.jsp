@@ -13,7 +13,7 @@
         <title><%=pageTitle%></title>
     </head>
     <body>
-        <p><a href="addRole.html">Insert a new role</a></p>
+        <p><a href="roleJSP?service=addRole">Insert a new role</a></p>
         
         <form action="roleJSP">
             Search a role name:<input type="text" name="roleName" id="txtName">
