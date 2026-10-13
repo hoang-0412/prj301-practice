@@ -39,12 +39,27 @@ public class roleJSP extends HttpServlet {
                 vector = dao.getAllRole("select * from tblRoles\n"
                         + "where roleName like N'%" + roleName + "%'");
             }
-            
+
             request.setAttribute("vector", vector);
             request.setAttribute("tableTitle", "List all role");
             request.setAttribute("pageTitle", "Role management");
-            
+
             request.getRequestDispatcher("jsp/rolelist.jsp").forward(request, response);
+        }
+
+        if (service.equals("addRole")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                request.getRequestDispatcher("jsp/addRole.jsp").forward(request, response);
+
+            } else {
+                int roleID = Integer.parseInt(request.getParameter("roleID"));
+                String roleName = request.getParameter("roleName");
+
+                Roles r = new Roles(roleID, roleName);
+                int n = dao.insertRole(r);
+                response.sendRedirect("roleJSP");
+            }
         }
     }
 

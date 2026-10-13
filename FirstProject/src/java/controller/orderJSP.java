@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Vector;
 import dal.orderDAO;
+import java.sql.Date;
 import model.Orders;
 
 @WebServlet(name = "orderJSP", urlPatterns = {"/orderJSP"})
@@ -39,12 +40,29 @@ public class orderJSP extends HttpServlet {
                 vector = dao.getAllOrder("select * from tblOrders\n"
                         + "where orderID like N'%" + orderID + "%'");
             }
-            
+
             request.setAttribute("vector", vector);
             request.setAttribute("tableTitle", "List of Orders");
             request.setAttribute("pageTitle", "Order management");
-            
+
             request.getRequestDispatcher("jsp/orderlist.jsp").forward(request, response);
+        }
+
+        if (service.equals("addOrder")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                request.getRequestDispatcher("jsp/addOrder.jsp").forward(request, response);
+
+            } else {
+                int orderID = Integer.parseInt(request.getParameter("orderID"));
+                Date orderDate = Date.valueOf(request.getParameter("orderDate"));
+                double total = Double.parseDouble(request.getParameter("total"));
+                String userID = request.getParameter("userID");
+
+                Orders o = new Orders(orderID, orderDate, total, userID);
+                int n = dao.insertOrder(o);
+                response.sendRedirect("orderJSP");
+            }
         }
     }
 

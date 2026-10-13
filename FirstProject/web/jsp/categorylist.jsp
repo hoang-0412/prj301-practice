@@ -12,7 +12,7 @@
         <title><%=pageTitle%></title>
     </head>
     <body>
-        <p><a href="addCategory.html">Insert a new category</a></p>
+        <p><a href="categoryJSP?service=addCategory">Insert a new category</a></p>
         <form action="categoryJSP">
             Search by category name: <input type="text" name="categoryName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">

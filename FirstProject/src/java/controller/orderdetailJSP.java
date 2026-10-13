@@ -39,12 +39,30 @@ public class orderdetailJSP extends HttpServlet {
                 vector = dao.getAllOrderDetail("select * from tblOrderDetails\n"
                         + "where detailID like N'%" + detailID + "%'");
             }
-            
+
             request.setAttribute("vector", vector);
             request.setAttribute("tableTitle", "List of order detail");
             request.setAttribute("pageTitle", "Order detail management");
-            
+
             request.getRequestDispatcher("jsp/orderdetaillist.jsp").forward(request, response);
+        }
+
+        if (service.equals("addOrderDetail")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                request.getRequestDispatcher("jsp/addOrderDetail.jsp").forward(request, response);
+
+            } else {
+                int detailID = Integer.parseInt(request.getParameter("detailID"));
+                double price = Double.parseDouble(request.getParameter("price"));
+                int quantity = Integer.parseInt(request.getParameter("quantity")),
+                        orderID = Integer.parseInt(request.getParameter("orderID")),
+                        productID = Integer.parseInt(request.getParameter("productID"));
+
+                OrderDetails od = new OrderDetails(detailID, price, quantity, orderID, productID);
+                int n = dao.insertOrderDetail(od);
+                response.sendRedirect("orderdetailJSP");
+            }
         }
     }
 

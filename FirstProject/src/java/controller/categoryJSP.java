@@ -45,6 +45,20 @@ public class categoryJSP extends HttpServlet {
 
             request.getRequestDispatcher("jsp/categorylist.jsp").forward(request, response);
         }
+        
+        if (service.equals("addCategory")) {
+            String submit = request.getParameter("submit");
+            if (submit == null) {
+                request.getRequestDispatcher("jsp/addCategory.jsp").forward(request, response);
+            } else {
+                String categoryID = request.getParameter("categoryID"),
+                        categoryName = request.getParameter("categoryName"),
+                        describe = request.getParameter("describe");
+                Categories c = new Categories(categoryID, categoryName, describe);
+                int n = dao.insertCategory(c);
+                response.sendRedirect("categoryJSP");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

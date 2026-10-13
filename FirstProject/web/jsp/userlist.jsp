@@ -14,7 +14,7 @@
         <title><%=pageTitle%></title>
     </head>
     <body>
-        <p><a href="addUser.html">Insert a new user</a></p>
+        <p><a href="userJSP?service=addUser">Insert a new user</a></p>
         <form action="userJSP">
             Search by user name:<input type="text" name="userName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">
