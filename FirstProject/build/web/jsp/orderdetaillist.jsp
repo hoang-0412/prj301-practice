@@ -44,8 +44,9 @@
                     <td><%=od.getQuantity()%></td>
                     <td><%=od.getOrderID()%></td>
                     <td><%=od.getProductID()%></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="orderdetailJSP?service=deleteOrderDetail&detailID=<%=od.getDetailID()%>"
+                           onclick="return confirm('Are you sure to delete?')">delete</a></td>
+                    <td><a href="orderdetailJSP?service=updateOrderDetail&detailID=<%=od.getDetailID()%>">update</a></td>
                 </tr>
                 <%}%>
             </tbody>
