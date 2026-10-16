@@ -64,6 +64,32 @@ public class orderJSP extends HttpServlet {
                 response.sendRedirect("orderJSP");
             }
         }
+
+        if (service.equals("deleteOrder")) {
+            int orderID = Integer.parseInt(request.getParameter("orderID"));
+            dao.deleteOrder(orderID);
+            response.sendRedirect("orderJSP");
+        }
+
+        if (service.equals("updateOrder")) {
+            String submit = request.getParameter("submit");
+            int orderID = Integer.parseInt(request.getParameter("orderID"));
+
+            if (submit == null) {
+                Orders o = dao.searchOrder(orderID);
+                request.setAttribute("o", o);
+                request.getRequestDispatcher("jsp/updateOrder.jsp").forward(request, response);
+
+            } else {
+                Date orderDate = Date.valueOf(request.getParameter("orderDate"));
+                double total = Double.parseDouble(request.getParameter("total"));
+                String userID = request.getParameter("userID");
+
+                Orders o = new Orders(orderID, orderDate, total, userID);
+                int n = dao.updateOrder(o);
+                response.sendRedirect("orderJSP");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

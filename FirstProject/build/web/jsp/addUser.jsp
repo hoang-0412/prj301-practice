@@ -7,7 +7,7 @@
     </head>
     <body>
         <form action="userJSP?service=addUser" method="POST">
-            <table border="1">
+            <table border="0">
                 <tbody>
                     <tr>
                         <td>userID:</td>

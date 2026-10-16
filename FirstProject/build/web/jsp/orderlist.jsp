@@ -40,8 +40,9 @@
                     <td><%=o.getOrderDate()%></td>
                     <td><%=o.getTotal()%></td>
                     <td><%=o.getUserID()%></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="orderJSP?service=deleteOrder&orderID=<%=o.getOrderID()%>"
+                           onclick="return confirm('Are you sure to delete?')">delete</a></td>
+                    <td><a href="orderJSP?service=updateOrder&orderID=<%=o.getOrderID()%>">update</a></td>
                 </tr>
                 <%}%>
             </tbody>

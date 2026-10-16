@@ -7,13 +7,7 @@
     </head>
     <body>
         <form action="orderJSP?service=addOrder" method="POST">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
+            <table border="0">
                 <tbody>
                     <tr>
                         <td>orderID:</td>

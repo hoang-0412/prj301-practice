@@ -74,7 +74,7 @@ public class userJSP extends HttpServlet {
         if (service.equals("deleteUser")) {
             String userID = request.getParameter("userID");
             dao.deleteUser(userID);
-            response.sendRedirect("userID");
+            response.sendRedirect("userJSP");
         }
         
         if (service.equals("updateUser")) {
