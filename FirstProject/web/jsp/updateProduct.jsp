@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.Vector,model.Category,model.Product" %>
+<%@page import="java.util.Vector,model.Categories,model.Products" %>
 <!DOCTYPE html>
 <html>
     <%
         //Get data from controller
-        Vector<Category> cVector = (Vector<Category>)request.getAttribute("cVector");
-        Product p = (Product)request.getAttribute("p");
+        Vector<Categories> cVector = (Vector<Categories>)request.getAttribute("cVector");
+        Products p = (Products)request.getAttribute("p");
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,7 +38,7 @@
                     <td>categoryID:</td>
                     <td>                      
                         <select name="categoryID" id="txtcategoryID">
-                            <%for (Category c : cVector) {%>
+                            <%for (Categories c : cVector) {%>
                             <option value="<%=c.getCategoryID()%>"
                                     <%=c.getCategoryID().equals(p.getCategoryID())?"selected":""%>>         
                                 <%=c.getCategoryName()%></option> 
