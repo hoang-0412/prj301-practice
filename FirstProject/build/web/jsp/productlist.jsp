@@ -51,8 +51,9 @@
                     <td><%=p.getImportDate()%></td>
                     <td><%=p.getUsingDate()%></td>
                     <td><%=p.getStatus()%></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="productjsp?service=deleteProduct&productID=<%=p.getProductID()%>" 
+                           onclick="return confirm('Are you sure to delete?')">delete</a></td>
+                    <td><a href="productjsp?service=updateProduct&productID=<%=p.getProductID()%>">update</a></td>
                 </tr>
                 <%}%>
             </tbody>
