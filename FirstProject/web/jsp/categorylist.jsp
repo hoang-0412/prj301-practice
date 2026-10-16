@@ -38,8 +38,9 @@
                     <td><%= c.getCategoryID() %></td>
                     <td><%= c.getCategoryName() %></td>
                     <td><%= c.getDescribe() %></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="categoryJSP?service=deleteCategory&categoryID=<%=c.getCategoryID()%>" 
+                           onclick="return confirm('Are you sure to delete?')">delete</a></td>
+                    <td><a href="categoryJSP?service=updateCategory&categoryID=<%=c.getCategoryID()%>">update</a></td>
                 </tr>
 
                 <% } %>

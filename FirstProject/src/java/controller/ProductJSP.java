@@ -83,6 +83,12 @@ public class ProductJSP extends HttpServlet {
             }
         }
 
+        if (service.equals("deleteProduct")) {
+            int pId = Integer.parseInt(request.getParameter("productID"));
+            dao.deleteProduct(pId);
+            response.sendRedirect("productjsp");
+        }
+
         if (service.equals("updateProduct")) {
             String submit = request.getParameter("submit");
             int pId = Integer.parseInt(request.getParameter("productID"));
