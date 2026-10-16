@@ -2,7 +2,7 @@
 <%@page import="java.util.Vector, model.Roles" %>
 <!DOCTYPE html>
 <html>
-    
+
     <%
         Vector<Roles> vector = (Vector<Roles>) request.getAttribute("vector");
         String tableTitle = (String) request.getAttribute("tableTitle");
@@ -14,14 +14,14 @@
     </head>
     <body>
         <p><a href="roleJSP?service=addRole">Insert a new role</a></p>
-        
+
         <form action="roleJSP">
             Search a role name:<input type="text" name="roleName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">
             <input type="reset" value="Reset">
             <input type="hidden" name="service" value="listAllRole">
         </form>
-        
+
         <table border="1">
             <caption><%=tableTitle%></caption>
             <thead>
@@ -37,8 +37,9 @@
                 <tr>
                     <td><%=r.getRoleID()%></td>
                     <td><%=r.getRoleName()%></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="roleJSP?service=deleteRole&roleID=<%=r.getRoleID()%>"
+                           onclick="return confirm('Are you sure to delete')">delete</a></td>
+                    <td><a href="roleJSP?service=updateRole&roleID=<%=r.getRoleID()%>">update</a></td>
                 </tr>
                 <%}%>
             </tbody>

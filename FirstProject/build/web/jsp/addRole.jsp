@@ -7,7 +7,7 @@
     </head>
     <body>
         <form action="roleJSP?service=addRole" method="POST">
-            <table border="1">
+            <table border="0">
                 <thead>
                     <tr>
                         <th></th>

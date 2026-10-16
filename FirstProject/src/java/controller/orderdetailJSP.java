@@ -64,6 +64,33 @@ public class orderdetailJSP extends HttpServlet {
                 response.sendRedirect("orderdetailJSP");
             }
         }
+
+        if (service.equals("deleteOrderDetail")) {
+            int detailID = Integer.parseInt(request.getParameter("detailID"));
+            dao.deleteOrderDetail(detailID);
+            response.sendRedirect("orderdetailJSP");
+        }
+
+        if (service.equals("updateOrderDetail")) {
+            String submit = request.getParameter("submit");
+            int detailID = Integer.parseInt(request.getParameter("detailID"));
+
+            if (submit == null) {
+                OrderDetails od = dao.searchOrderDetail(detailID);
+                request.setAttribute("od", od);
+                request.getRequestDispatcher("jsp/updateOrderDetail.jsp").forward(request, response);
+
+            } else {
+                double price = Double.parseDouble(request.getParameter("price"));
+                int quantity = Integer.parseInt(request.getParameter("quantity")),
+                        orderID = Integer.parseInt(request.getParameter("orderID")),
+                        productID = Integer.parseInt(request.getParameter("productID"));
+
+                OrderDetails od = new OrderDetails(detailID, price, quantity, orderID, productID);
+                int n = dao.updateOrderDetail(od);
+                response.sendRedirect("orderdetailJSP");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -45,17 +45,45 @@ public class categoryJSP extends HttpServlet {
 
             request.getRequestDispatcher("jsp/categorylist.jsp").forward(request, response);
         }
-        
+
         if (service.equals("addCategory")) {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 request.getRequestDispatcher("jsp/addCategory.jsp").forward(request, response);
+
             } else {
                 String categoryID = request.getParameter("categoryID"),
                         categoryName = request.getParameter("categoryName"),
                         describe = request.getParameter("describe");
                 Categories c = new Categories(categoryID, categoryName, describe);
                 int n = dao.insertCategory(c);
+                response.sendRedirect("categoryJSP");
+            }
+        }
+
+        if (service.equals("deleteCategory")) {
+            String categoryID = request.getParameter("categoryID");
+            dao.deleteCategory(categoryID);
+            response.sendRedirect("categoryJSP");
+        }
+
+        if (service.equals("updateCategory")) {
+            String submit = request.getParameter("submit");
+            String categoryID = request.getParameter("categoryID");
+
+            if (submit == null) { //show updateCategory.jsp
+                //Call Model
+                Categories c = dao.searchCategory(categoryID);
+                //set Data to send
+                request.setAttribute("c", c);
+                //select view to send
+                request.getRequestDispatcher("jsp/updateCategory.jsp").forward(request, response);
+
+            } else {
+                String categoryName = request.getParameter("categoryName"),
+                        describe = request.getParameter("describe");
+                Categories c = new Categories(categoryID, categoryName, describe);
+                int n = dao.updateCategory(c);
                 response.sendRedirect("categoryJSP");
             }
         }

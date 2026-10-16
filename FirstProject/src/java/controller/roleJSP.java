@@ -61,6 +61,29 @@ public class roleJSP extends HttpServlet {
                 response.sendRedirect("roleJSP");
             }
         }
+
+        if (service.equals("deleteRole")) {
+            int roleID = Integer.parseInt(request.getParameter("roleID"));
+            dao.deleteRole(roleID);
+            response.sendRedirect("roleJSP");
+        }
+
+        if (service.equals("updateRole")) {
+            String submit = request.getParameter("submit");
+            int roleID = Integer.parseInt(request.getParameter("roleID"));
+
+            if (submit == null) {
+                Roles r = dao.searchRole(roleID);
+                request.setAttribute("r", r);
+                request.getRequestDispatcher("jsp/updateRole.jsp").forward(request, response);
+
+            } else {
+                String roleName = request.getParameter("roleName");
+                Roles r = new Roles(roleID, roleName);
+                int n = dao.updateRole(r);
+                response.sendRedirect("roleJSP");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

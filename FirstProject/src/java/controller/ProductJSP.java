@@ -82,6 +82,40 @@ public class ProductJSP extends HttpServlet {
                 response.sendRedirect("productjsp");
             }
         }
+
+        if (service.equals("deleteProduct")) {
+            int pId = Integer.parseInt(request.getParameter("productID"));
+            dao.deleteProduct(pId);
+            response.sendRedirect("productjsp");
+        }
+
+        if (service.equals("updateProduct")) {
+            String submit = request.getParameter("submit");
+            int pId = Integer.parseInt(request.getParameter("productID"));
+
+            if (submit == null) {//show updateProduct.jsp
+                //Call Model
+                Vector<Categories> cVector = cDao.getAllCategory(sql2);
+                Products p = dao.searchProduct(pId);
+                //set Data to send
+                request.setAttribute("cVector", cVector);
+                request.setAttribute("p", p);
+                //select view to send
+                request.getRequestDispatcher("jsp/updateProduct.jsp").forward(request, response);
+            } else {
+                String productName = request.getParameter("productName"),
+                        image = request.getParameter("image");
+                double price = Double.parseDouble(request.getParameter("price"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                String categoryID = request.getParameter("categoryID");
+                Date importDate = Date.valueOf(request.getParameter("importDate")),
+                        usingDate = Date.valueOf(request.getParameter("usingDate"));
+                int status = Integer.parseInt(request.getParameter("status"));
+                Products p = new Products(pId, productName, image, price, quantity, categoryID, importDate, usingDate, status);
+                int n = dao.updateProduct(p);
+                response.sendRedirect("productjsp");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

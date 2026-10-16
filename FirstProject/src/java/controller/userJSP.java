@@ -70,6 +70,39 @@ public class userJSP extends HttpServlet {
                 response.sendRedirect("userJSP");
             }
         }
+        
+        if (service.equals("deleteUser")) {
+            String userID = request.getParameter("userID");
+            dao.deleteUser(userID);
+            response.sendRedirect("userJSP");
+        }
+        
+        if (service.equals("updateUser")) {
+            String submit = request.getParameter("submit");
+            String userID = request.getParameter("userID");
+            
+            if (submit == null) {
+                Users u = dao.searchUser(userID);
+                request.setAttribute("u", u);
+                request.getRequestDispatcher("jsp/updateUser.jsp").forward(request, response);
+                
+            } else {
+                String fullName = request.getParameter("fullName"),
+                        password = request.getParameter("password");
+
+                int roleID = Integer.parseInt(request.getParameter("roleID"));
+
+                String address = request.getParameter("address"),
+                        phone = request.getParameter("phone"),
+                        email = request.getParameter("email");
+
+                int activate = Integer.parseInt(request.getParameter("activate"));
+
+                Users u = new Users(userID, fullName, password, roleID, address, phone, email, activate);
+                int n = dao.updateUser(u);
+                response.sendRedirect("userJSP");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

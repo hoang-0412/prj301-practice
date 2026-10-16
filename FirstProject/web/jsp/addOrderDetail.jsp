@@ -7,7 +7,7 @@
     </head>
     <body>
         <form action="orderdetailJSP?service=addOrderDetail" method="POST">
-            <table border="1">
+            <table border="0">
                 <thead>
                     <tr>
                         <th></th>
