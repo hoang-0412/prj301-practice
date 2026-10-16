@@ -8,6 +8,11 @@
             <file>file:/D:/prj301-practice/FirstProject/web/jsp/productlist.jsp</file>
             <file>file:/D:/prj301-practice/FirstProject/src/java/controller/CategoryServlet.java</file>
             <file>file:/D:/prj301-practice/FirstProject/src/java/controller/categoryJSP.java</file>
+            <file>file:/D:/prj301-practice/FirstProject/web/addOrder.html</file>
+            <file>file:/D:/prj301-practice/FirstProject/src/java/controller/OrderServlet.java</file>
+            <file>file:/D:/prj301-practice/FirstProject/web/newhtml.html</file>
+            <file>file:/D:/prj301-practice/FirstProject/src/java/controller/OrderDetailServlet.java</file>
+            <file>file:/D:/prj301-practice/FirstProject/web/addOrderDetail.html</file>
         </group>
     </open-files>
 </project-private>
