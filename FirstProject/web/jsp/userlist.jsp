@@ -2,13 +2,13 @@
 <%@page import="java.util.Vector, model.Users" %>
 <!DOCTYPE html>
 <html>
-    
+
     <%
         Vector<Users> vector = (Vector<Users>) request.getAttribute("vector");
         String tableTitle = (String) request.getAttribute("tableTitle");
         String pageTitle = (String) request.getAttribute("pageTitle");
     %>
-    
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%=pageTitle%></title>
@@ -21,9 +21,9 @@
             <input type="reset" value="Reset">
             <input type="hidden" name="service" value="listAllUser">
         </form>
-        
+
         <table border="1">
-            
+
             <caption><%=tableTitle%></caption>
             <thead>
                 <tr>
@@ -50,8 +50,9 @@
                     <td><%=u.getPhone()%></td>
                     <td><%=u.getEmail()%></td>
                     <td><%=u.getActivate()%></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="userJSP?service=deleteUser&userID=<%=u.getUserID()%>"
+                           onclick="return confirm('Are you sure to delete')">delete</a></td>
+                    <td><a href="userJSP?service=updateUser&userID=<%=u.getUserID()%>">update</a></td>
                 </tr>
                 <%}%>
             </tbody>

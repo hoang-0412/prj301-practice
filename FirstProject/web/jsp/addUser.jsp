@@ -8,12 +8,6 @@
     <body>
         <form action="userJSP?service=addUser" method="POST">
             <table border="1">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
                         <td>userID:</td>

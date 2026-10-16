@@ -62,8 +62,8 @@ public class categoryJSP extends HttpServlet {
         }
 
         if (service.equals("deleteCategory")) {
-            String cId = request.getParameter("categoryID");
-            dao.deleteCategory(cId);
+            String categoryID = request.getParameter("categoryID");
+            dao.deleteCategory(categoryID);
             response.sendRedirect("categoryJSP");
         }
 
@@ -78,6 +78,7 @@ public class categoryJSP extends HttpServlet {
                 request.setAttribute("c", c);
                 //select view to send
                 request.getRequestDispatcher("jsp/updateCategory.jsp").forward(request, response);
+
             } else {
                 String categoryName = request.getParameter("categoryName"),
                         describe = request.getParameter("describe");
