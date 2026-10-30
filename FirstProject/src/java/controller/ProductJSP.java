@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.util.Vector;
 import model.Products;
 import dal.categoryDAO;
+import dal.userDAO;
+import jakarta.servlet.http.HttpSession;
 import model.Categories;
 
 @WebServlet(name = "ProductJSP", urlPatterns = {"/productjsp"})
@@ -27,6 +29,8 @@ public class ProductJSP extends HttpServlet {
         productDAO dao = new productDAO();
         Vector<Products> vector;
         categoryDAO cDao = new categoryDAO();
+        HttpSession session = request.getSession(true);
+        userDAO uDao = new userDAO();
 
         String service = request.getParameter("service");
         if (service == null) {
@@ -114,6 +118,25 @@ public class ProductJSP extends HttpServlet {
                 Products p = new Products(pId, productName, image, price, quantity, categoryID, importDate, usingDate, status);
                 int n = dao.updateProduct(p);
                 response.sendRedirect("productjsp");
+            }
+        }
+        
+        if(service.equals("login")){
+            String submit = request.getParameter("submit");
+            if(submit==null){//show login.jsp
+                request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+            }else{
+                String email =request.getParameter("email");
+                String pass = request.getParameter("pass");
+                boolean check = uDao.checkLogin(email, pass);
+                if(check){//show list of products
+                    session.setAttribute("email", email);
+                    response.sendRedirect("productjsp");
+                }else{//show login failed!
+                    String mess = "Login Failed!";
+                    request.setAttribute("mess", mess);
+                    request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+                }
             }
         }
     }
