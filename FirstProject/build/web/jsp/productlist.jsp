@@ -15,7 +15,10 @@
         <title><%=pageTtile%></title>
     </head>
     <body>
-        <p><a href="productjsp?service=addProduct">Insert a new Product</a></p>
+        <p>
+            <a href="productjsp?service=addProduct">Insert a new Product</a> | 
+            <a href="cart">View Cart</a>
+        </p>
         <form action="productjsp">
             Search By Product Name: <input type="text" name="productName" id="txtName">
             <input type="submit" name="submit" id="txtSubmit" value="Search">
@@ -37,6 +40,7 @@
                     <th>status</th>
                     <th>delete</th>
                     <th>update</th>
+                    <th>add to Cart</th>
                 </tr>
             </thead>
             <tbody>                
@@ -54,6 +58,7 @@
                     <td><a href="productjsp?service=deleteProduct&productID=<%=p.getProductID()%>" 
                            onclick="return confirm('Are you sure to delete?')">delete</a></td>
                     <td><a href="productjsp?service=updateProduct&productID=<%=p.getProductID()%>">update</a></td>
+                    <td><a href="cart?service=add2Cart&productID=<%=p.getProductID()%>">add to Cart</a></td>
                 </tr>
                 <%}%>
             </tbody>

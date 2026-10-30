@@ -159,6 +159,25 @@ public class userDAO extends DBContext {
         return n;
     }
 
+    String sql = "SELECT * FROM tblUsers\n"
+            + "Where email=? and password=?";
+
+    public boolean checkLogin(String email, String pass) {
+        boolean check = false;
+        try {
+            PreparedStatement ptm = connection.prepareStatement(sql);
+            ptm.setString(1, email);
+            ptm.setString(2, pass);
+            ResultSet rs = ptm.executeQuery();
+            if (rs.next()) {
+                check = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(userDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
         userDAO dao = new userDAO();
         String sql = "select * from tblUsers";
