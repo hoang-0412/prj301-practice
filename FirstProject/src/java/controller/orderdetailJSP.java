@@ -42,18 +42,8 @@ public class orderdetailJSP extends HttpServlet {
             }
 
             if (sum != null) {
-                String orderID_raw = request.getParameter("orderID");
-                String sqlSum;
-                if (orderID_raw == null || orderID_raw.trim().isEmpty()) {
-                    sqlSum = "SELECT 0, SUM(price * quantity), 0, orderID, 0 "
-                            + "FROM tblOrderDetails GROUP BY orderID";
-                } else {
-                    int orderID = Integer.parseInt(orderID_raw.trim());
-                    sqlSum = "SELECT 0, SUM(price * quantity), 0, orderID, 0 "
-                            + "FROM tblOrderDetails "
-                            + "WHERE orderID = " + orderID + " "
-                            + "GROUP BY orderID";
-                }
+                int orderID = Integer.parseInt(request.getParameter("orderID"));
+                String sqlSum = "select * from tblOrderDetails where orderID = " + orderID;
                 Vector<OrderDetails> sumVector = dao.getAllOrderDetail(sqlSum);
                 request.setAttribute("sumVector", sumVector);
             }

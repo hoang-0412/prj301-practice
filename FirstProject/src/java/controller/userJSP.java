@@ -28,6 +28,17 @@ public class userJSP extends HttpServlet {
             service = "listAllUser";
         }
 
+        if (service.equals("userByRoleId")) {
+            String uRole = request.getParameter("roleID");
+            if (uRole != null) {
+                int roleID = Integer.parseInt(request.getParameter("roleID"));
+                String sqlUR = "select * from tblUsers where roleID = " + roleID;
+                vector = dao.getAllUser(sqlUR);
+                request.setAttribute("vector", vector);
+                request.getRequestDispatcher("jsp/userlist.jsp").forward(request, response);
+            }
+        }
+
         if (service.equals("listAllUser")) {
             String submit = request.getParameter("submit");
 
@@ -45,6 +56,7 @@ public class userJSP extends HttpServlet {
             request.setAttribute("pageTitle", "User management");
 
             request.getRequestDispatcher("jsp/userlist.jsp").forward(request, response);
+            //tạo link trên trang chủ, trong link mở trang user và truyền đi thêm roleID. trang hiển thị là danh sách các user thuộc role trên
         }
 
         if (service.equals("addUser")) {
@@ -70,22 +82,22 @@ public class userJSP extends HttpServlet {
                 response.sendRedirect("userJSP");
             }
         }
-        
+
         if (service.equals("deleteUser")) {
             String userID = request.getParameter("userID");
             dao.deleteUser(userID);
             response.sendRedirect("userJSP");
         }
-        
+
         if (service.equals("updateUser")) {
             String submit = request.getParameter("submit");
             String userID = request.getParameter("userID");
-            
+
             if (submit == null) {
                 Users u = dao.searchUser(userID);
                 request.setAttribute("u", u);
                 request.getRequestDispatcher("jsp/updateUser.jsp").forward(request, response);
-                
+
             } else {
                 String fullName = request.getParameter("fullName"),
                         password = request.getParameter("password");

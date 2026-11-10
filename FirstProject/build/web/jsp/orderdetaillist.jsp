@@ -61,10 +61,13 @@
             <input type="submit" name="sum" value="SUM">
         </form>
 
-        <% if (sumVector != null) { %>
-            <% for (OrderDetails s : sumVector) { %>
-                <p>OrderID: <%= s.getOrderID() %> - Total: <%= s.getPrice() %></p>
-            <% } %>
+        <% if (sumVector != null) {
+                double total = 0;
+                for (OrderDetails s : sumVector) {
+                    total += s.getPrice() * s.getQuantity();
+                }
+        %>
+            <p>OrderID: <%= request.getParameter("orderID") %> - Total: <%= total %></p>
         <% } %>
 
     </body>
