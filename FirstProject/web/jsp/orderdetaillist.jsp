@@ -5,6 +5,7 @@
 
     <%
         Vector<OrderDetails> vector = (Vector<OrderDetails>) request.getAttribute("vector");
+        Vector<OrderDetails> sumVector = (Vector<OrderDetails>) request.getAttribute("sumVector");
         String tableTitle = (String) request.getAttribute("tableTitle");
         String pageTitle = (String) request.getAttribute("pageTitle");
     %>
@@ -51,6 +52,20 @@
                 <%}%>
             </tbody>
         </table>
+
+        <br>
+        <form action="orderdetailJSP">
+            Enter orderID: <input type="text" name="orderID">
+            <br>
+            <input type="hidden" name="service" value="listAllOrderDetail">
+            <input type="submit" name="sum" value="SUM">
+        </form>
+
+        <% if (sumVector != null) { %>
+            <% for (OrderDetails s : sumVector) { %>
+                <p>OrderID: <%= s.getOrderID() %> - Total: <%= s.getPrice() %></p>
+            <% } %>
+        <% } %>
 
     </body>
 </html>

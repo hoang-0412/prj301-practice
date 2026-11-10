@@ -30,6 +30,7 @@ public class orderdetailJSP extends HttpServlet {
 
         if (service.equals("listAllOrderDetail")) {
             String submit = request.getParameter("submit");
+            String sum = request.getParameter("sum");
 
             if (submit == null) {
                 vector = dao.getAllOrderDetail(sql);
@@ -38,6 +39,23 @@ public class orderdetailJSP extends HttpServlet {
                 int detailID = Integer.parseInt(request.getParameter("detailID"));
                 vector = dao.getAllOrderDetail("select * from tblOrderDetails\n"
                         + "where detailID like N'%" + detailID + "%'");
+            }
+
+            if (sum != null) {
+                String orderID_raw = request.getParameter("orderID");
+                String sqlSum;
+                if (orderID_raw == null || orderID_raw.trim().isEmpty()) {
+                    sqlSum = "SELECT 0, SUM(price * quantity), 0, orderID, 0 "
+                            + "FROM tblOrderDetails GROUP BY orderID";
+                } else {
+                    int orderID = Integer.parseInt(orderID_raw.trim());
+                    sqlSum = "SELECT 0, SUM(price * quantity), 0, orderID, 0 "
+                            + "FROM tblOrderDetails "
+                            + "WHERE orderID = " + orderID + " "
+                            + "GROUP BY orderID";
+                }
+                Vector<OrderDetails> sumVector = dao.getAllOrderDetail(sqlSum);
+                request.setAttribute("sumVector", sumVector);
             }
 
             request.setAttribute("vector", vector);

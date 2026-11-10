@@ -24,6 +24,9 @@ public class UserServlet extends HttpServlet {
         Vector<Users> vector;
         String service = request.getParameter("service");
 
+        Users uEmail = dao.searchUser("U002");
+        Users uPhone = dao.searchUser("U005");
+
         if (service == null) {
             service = "listAllUser";
         }
@@ -115,6 +118,10 @@ public class UserServlet extends HttpServlet {
                 }
 
                 out.println("</table>");
+
+                out.println("User:");
+                out.println("U002: " + uEmail.getEmail());
+                out.println("U005: " + uPhone.getPhone());
                 out.println("</body>");
                 out.println("</html>");
             }
